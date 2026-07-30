@@ -6,7 +6,11 @@
  */
 
 get_header(); 
-$posts_nav_style = get_theme_mod( 'nisarg_posts_nav','old-new-posts');
+$primary_class = 'col-md-9';
+if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	$primary_class .= ' no-widgets-sidebar';
+}
+$posts_nav_style = get_theme_mod( 'nisarg_posts_nav','page-number-round');
 ?>
 	<div class="container">
 		<div class="row">
@@ -16,7 +20,7 @@ $posts_nav_style = get_theme_mod( 'nisarg_posts_nav','old-new-posts');
 						/* translators: 1: Search Query. */
 						printf( esc_html__( 'Search Results for: %s', 'nisarg' ), '<span>' . get_search_query() . '</span>' ); ?></h3>
 					</header><!-- .page-header -->
-				<section id="primary" class="col-md-9 content-area">
+				<section id="primary" class="<?php echo esc_attr( $primary_class ); ?> content-area">
 					<main id="main" class="site-main" role="main">
 
 					<?php /* Start the Loop */ ?>
@@ -49,7 +53,7 @@ $posts_nav_style = get_theme_mod( 'nisarg_posts_nav','old-new-posts');
 
 				<?php else : ?>
 
-				<section id="primary" class="col-md-9 content-area">
+				<section id="primary" class="<?php echo esc_attr( $primary_class ); ?> content-area">
 					<main id="main" class="site-main" role="main">
 
 					<?php get_template_part( 'template-parts/content', 'none' ); ?>

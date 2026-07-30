@@ -5,12 +5,16 @@
  * @package nisarg
  * @since nisarg 1.0
  */
-get_header();
+get_header(); 
+$primary_class = 'col-md-9';
+if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	$primary_class .= ' no-widgets-sidebar';
+}
 ?>
 <div class="container">
 	<div class="row">
 		<div class="col-md-2"></div>
-			<div id="primary" class="col-md-9 content-area image-attachment">
+			<div id="primary" class="<?php echo esc_attr( $primary_class ); ?> content-area image-attachment">
 				<div id="content" class="site-content" role="main">
 				<?php while ( have_posts() ) : the_post(); ?>
 	            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

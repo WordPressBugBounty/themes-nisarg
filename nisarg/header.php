@@ -9,18 +9,12 @@
 ?>
 <!DOCTYPE html>
 
-<!--[if IE 8]>
-<html id="ie8" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if !(IE 8) ]><!-->
 <html <?php language_attributes(); ?>>
-<!--<![endif]-->
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width" />
-<link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<?php wp_head(); ?>
+	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<?php wp_head(); ?>
 </head>
 <?php 
 	$theme_skin = get_theme_mod( 'nisarg_skin_select', 'light' ); 
@@ -34,6 +28,9 @@
 ?>
 <body <?php body_class( $skin_words ); ?>>
 <?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#content">
+	<?php esc_html_e( 'Skip to content', 'nisarg' ); ?>
+</a>
 <div id="page" class="hfeed site">
 <header id="masthead"  <?php echo esc_attr( $add_class ); ?> role="banner">
 	<nav id="site-navigation" class="main-navigation navbar-fixed-top navbar-left" role="navigation">

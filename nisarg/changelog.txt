@@ -1,5 +1,12 @@
 == Changelog ==
 
+= 1.7 July 30 2026
+* Improved compatibility with the latest WordPress releases.
+* Improved accessibility with a skip-to-content link.
+* Improved layout when no sidebar widgets are active.
+* Removed obsolete browser compatibility scripts.
+* Code cleanup and minor improvements.
+
 =1.6 August 15 2024
 * Added option to show/hide site header
 * Added options to show/hide site title in the top navbar on desktop and mobile devices

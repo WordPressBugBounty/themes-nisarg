@@ -4,11 +4,11 @@ Theme URI: https://www.falgunithemes.com/downloads/nisarg/
 Author: Falguni Desai
 Author URI: https://www.falgunithemes.com
 Tags: flexible-header, two-columns, right-sidebar, theme-options, custom-colors, custom-background, custom-header, custom-menu, featured-images,  post-formats, sticky-post, translation-ready, rtl-language-support, threaded-comments
-Description: Nisarg is a new fully responsive and translation ready theme that allows you to create stunning blogs and websites. Theme is well suited for travel, photography, recipe, design, art, personal and any other creative websites and blogs. The theme is developed using Bootstrap 3 that makes it mobile and tablets friendly.  It has various options in WordPress Customizer to change look of the theme. Theme customizer can be used to add your own header image of flexible height, background image, to set background color, header text color and accent color.
-Version: 1.6
-Requires at least: 5.0
-Tested up to: 6.6
-Requires PHP: 7.0
+Description: Nisarg is a Classic WordPress theme with a clean, content-first design. Ideal for blogs, photography, travel, recipes, art, portfolios, and personal websites. It helps your content stand out with a distraction-free layout and intuitive Customizer options. Nisarg theme is Responsive and translation-ready. It combines simplicity and flexibility to help you create a beautiful, professional-looking website.
+Version: 1.7
+Requires at least: 6.0
+Tested up to: 6.8
+Requires PHP: 7.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: nisarg
@@ -82,7 +82,7 @@ p{
 
 
 a{
-    color: #607D8B;
+    color: #009688;
     text-decoration: none;
 }
 
@@ -113,7 +113,7 @@ dfn, cite, em, i {
 }
 
 blockquote {
-    border-left: 5px solid #455A64;
+    border-left: 5px solid #009688;
     background: #F5f5f5;
     font-size: 18px;
     font-style: italic;
@@ -244,12 +244,9 @@ button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-    border: 1px solid #455A64;
+    background:  #009688;
+    border: 1px solid #009688;
     border-radius: 2px;
-    background:    -moz-linear-gradient(#607d8b, #455a64);
-    background:    -o-linear-gradient(#607d8b, #455a64);
-    background:    -webkit-linear-gradient(#607d8b, #455a64);
-    background:    linear-gradient(#607d8b, #455a64);
     color:#fff;
 }
 
@@ -257,12 +254,9 @@ button:hover,
 html input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-    border: 1px solid #455A64;
+    background: #009688;
+    border: 1px solid #009688;
     border-radius: 2px;
-    background:    -moz-linear-gradient(#607d8b, #455a64);
-    background:    -o-linear-gradient(#607d8b, #455a64);
-    background:    -webkit-linear-gradient(#607d8b, #455a64);
-    background:    linear-gradient(#607d8b, #455a64);
     color:#fff;
 }
 
@@ -274,12 +268,9 @@ button:active,
 html input[type="button"]:active,
 input[type="reset"]:active,
 input[type="submit"]:active {
-    border: 1px solid #455A64;
+    background: #009688;
+    border: 1px solid #009688;
     border-radius: 2px;
-    background:    -moz-linear-gradient(#607d8b, #455a64);
-    background:    -o-linear-gradient(#607d8b, #455a64);
-    background:    -webkit-linear-gradient(#607d8b, #455a64);
-    background:    linear-gradient(#607d8b, #455a64);
     color:#fff;
 }
 
@@ -634,7 +625,7 @@ img.wp-post-image{
     border-color: #455A64;
 }
 .main-navigation .menu-toggle:hover, .main-navigation .menu-toggle:focus {
-    background-color: #455A64;
+    background-color: #009688;
     color: #fff;
 }
 .main-navigation .menu-toggle .icon-bar {
@@ -1002,7 +993,8 @@ img.wp-post-image{
 
 }
 
-.entry-meta a{
+.entry-meta a,
+.entry-meta a:visited {
     clear: both;
     color: #727272;
     text-transform: capitalize;
@@ -1052,7 +1044,10 @@ img.wp-post-image{
     margin-bottom: 1em;
 }
 
-.cat-links a, .tags-links a{
+.cat-links a,
+.cat-links a:visited,
+.tags-links a,
+.tags-links a:visited {
     color: #727272;
     text-transform: capitalize;
 }
@@ -1087,18 +1082,19 @@ img.wp-post-image{
 }
 
 /**Buttons**/
-.btn-default{
+.btn-default {
     border: none;
     border-radius: 0px;
     color: #212121;
 }
 
-.btn-default:hover, .btn-default:focus{
-    color: #fff;
+.btn-default:visited {
+    color: #212121;
 }
 
-.btn-default:visited{
-    color:#212121;
+.btn-default:hover,
+.btn-default:focus {
+    color: #fff;
 }
 
 /*Image attachment*/
@@ -1158,7 +1154,11 @@ img.wp-post-image{
 }
 
 .next-post a,
-.prev-post a {
+.prev-post a,
+.next-post a:visited,
+.prev-post a:visited,
+.next-post a:focus,
+.prev-post a:focus {
     color: #424242;
     word-wrap: break-word;
 }
@@ -1350,11 +1350,7 @@ img.wp-post-image{
 }
 
 .comment-respond #submit{
-    background-color: #455A64;
-    background:    -moz-linear-gradient(#607d8b, #455a64);
-    background:    -o-linear-gradient(#607d8b, #455a64);
-    background:    -webkit-linear-gradient(#607d8b, #455a64);
-    background:    linear-gradient(#607d8b, #455a64);
+    background-color: #009688;
     color: white;
     border:none;
     border-radius: 4px;
@@ -2043,4 +2039,9 @@ body.dark,
 
 .dark .main-navigation .menu-toggle .icon-bar {
     background-color: rgba(255,255,255,0.87);
+}
+.no-widgets-sidebar {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
 }

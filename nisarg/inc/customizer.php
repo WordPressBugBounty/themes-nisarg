@@ -565,10 +565,25 @@ function nisarg_get_color_scheme_css( $colors ) {
 
 	/* Accent Color */
 
+	a,
 	a:active,
 	a:hover,
-	a:focus {
+	a:focus,
+	a:visited,
+	.woocommerce-Price-amount,
+	.woocommerce:where(body:not(.woocommerce-uses-block-theme)) ul.products li.product .price,
+	.woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product p.price, 
+	.woocommerce:where(body:not(.woocommerce-uses-block-theme)) div.product span.price {
 	    color: {$colors['accent_color']};
+	}
+
+	.comment-respond #submit,
+	.woocommerce span.onsale {
+		background-color: {$colors['accent_color']};
+	}
+
+	.main-navigation .menu-toggle:hover, .main-navigation .menu-toggle:focus {
+		background-color: {$colors['accent_color']};
 	}
 
 	.main-navigation .primary-menu > li > a:hover, .main-navigation .primary-menu > li > a:focus {
@@ -720,6 +735,11 @@ function nisarg_get_color_scheme_css( $colors ) {
 	.dark a {
 		color: {$colors['accent_color']};
 	}
+	button, html input[type="button"], input[type="reset"], input[type="submit"],
+	button:focus, html input[type="button"]:focus, input[type="reset"]:focus, input[type="submit"]:focus, button:active, html input[type="button"]:active, input[type="reset"]:active, input[type="submit"]:active {
+		background: {$colors['accent_color']};
+		border-color: {$colors['accent_color']};
+	}
 
 CSS;
 
@@ -850,18 +870,18 @@ if ( ! function_exists( 'nisarg_font_css' ) ) :
 		input,
 		select,
 		textarea {
-		    font-family:  '<?php echo  esc_attr( $body_font_family ); ?>',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+		    font-family:  "<?php echo  esc_attr( $body_font_family ); ?>",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 		    font-weight: <?php echo esc_attr( $body_font_weight ); ?>;
 		    font-style: <?php echo  esc_attr( $body_font_style ); ?>; 
 		}
 		h1,h2,h3,h4,h5,h6 {
-	    	font-family: '<?php echo  esc_attr( $heading_font_family ); ?>',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+	    	font-family: "<?php echo  esc_attr( $heading_font_family ); ?>",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 	    	font-weight: <?php echo esc_attr( $heading_font_weight ); ?>;
 	    	font-style: <?php echo esc_attr( $heading_font_style ); ?>;
 	    }
 	    .navbar-brand,
 	    #site-navigation.main-navigation ul {
-	    	font-family: '<?php echo  esc_attr( $menu_item_font_family ); ?>',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+	    	font-family: "<?php echo  esc_attr( $menu_item_font_family ); ?>",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 	    }
 	    #site-navigation.main-navigation ul {
 	    	font-weight: <?php echo esc_attr( $menu_font_weight ); ?>;

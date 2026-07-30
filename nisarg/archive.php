@@ -7,7 +7,11 @@
  * @package Nisarg
  */
 get_header(); 
-$posts_nav_style = get_theme_mod( 'nisarg_posts_nav','old-new-posts');
+$primary_class = 'col-md-9';
+if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	$primary_class .= ' no-widgets-sidebar';
+}
+$posts_nav_style = get_theme_mod( 'nisarg_posts_nav','page-number-round');
 ?>
 	<div class="container">
 		<div class="row">
@@ -18,7 +22,7 @@ $posts_nav_style = get_theme_mod( 'nisarg_posts_nav','old-new-posts');
 						the_archive_description( '<div class="taxonomy-description">', '</div>' )
 					?>
 				</header><!-- .page-header -->
-				<div id="primary" class="col-md-9 content-area">
+				<div id="primary" class="<?php echo esc_attr( $primary_class ); ?> content-area">
 					<main id="main" class="site-main" role="main">
 					<?php /* Start the Loop */
 					while ( have_posts() ) : the_post();
@@ -48,7 +52,7 @@ $posts_nav_style = get_theme_mod( 'nisarg_posts_nav','old-new-posts');
 						endif;
 					}?>
 			<?php else : ?>
-			<div id="primary" class="col-md-9 content-area">
+			<div id="primary" class="<?php echo esc_attr( $primary_class ); ?> content-area">
 				<main id="main" class="site-main" role="main">
 					<?php get_template_part( 'template-parts/content', 'none' ); ?>
 			<?php endif; ?>

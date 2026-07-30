@@ -12,12 +12,17 @@
  */
 
 get_header(); 
-$posts_nav_style = get_theme_mod( 'nisarg_posts_nav','old-new-posts');
+$posts_nav_style = get_theme_mod( 'nisarg_posts_nav','page-number-round');
+
+$primary_class = 'col-md-9';
+if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	$primary_class .= ' no-widgets-sidebar';
+}
 ?>
 
 	<div class="container">
 		<div class="row">
-			<div id="primary" class="col-md-9 content-area">
+			<div id="primary" class="<?php echo esc_attr( $primary_class ); ?> content-area">
 				<main id="main" class="site-main" role="main">
 				<?php if ( have_posts() ) : ?>
 					<?php if ( is_home() && ! is_front_page() ) : ?>

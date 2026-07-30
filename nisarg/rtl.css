@@ -4,11 +4,11 @@ Theme URI: https://www.falgunithemes.com/downloads/nisarg/
 Author: Falguni Desai
 Author URI: https://www.falgunithemes.com
 Tags: flexible-header, two-columns, right-sidebar, theme-options, custom-colors, custom-background, custom-header, custom-menu, featured-images,  post-formats, sticky-post, translation-ready, rtl-language-support, threaded-comments
-Description: Nisarg is a new fully responsive and translation ready theme that allows you to create stunning blogs and websites. Theme is well suited for travel, photography, recipe, design, art, personal and any other creative websites and blogs. The theme is developed using Bootstrap 3 that makes it mobile and tablets friendly.  It has various options in WordPress Customizer to change look of the theme. Theme customizer can be used to add your own header image of flexible height, background image, to set background color, header text color and accent color. Theme supports eight post formats, such as: Video, Image, Aside, Status, Audio, Quote, Link and Gallery. 
-Version: 1.6
-Requires at least: 5.0
-Tested up to: 6.6
-Requires PHP: 7.0
+Description: Nisarg is a Classic WordPress theme with a clean, content-first design. Ideal for blogs, photography, travel, recipes, art, portfolios, and personal websites. It helps your content stand out with a distraction-free layout and intuitive Customizer options. Nisarg theme is Responsive and translation-ready. It combines simplicity and flexibility to help you create a beautiful, professional-looking website.
+Version: 1.7
+Requires at least: 6.0
+Tested up to: 6.8
+Requires PHP: 7.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: nisarg
@@ -38,8 +38,7 @@ This theme is licensed under the GPL.
  * 8.0 Print
  * 9.0 Jetpack Infinite Scroll
  * 10.0 Gutenberg
- * 11.0 Bootstrap grid and tables
- * 12.0 Dark Theme Skin
+ * 11.0 Dark Theme Skin
  *     
 **/
 
@@ -65,7 +64,7 @@ textarea {
 }
 
 body {
-     line-height: 1.7;
+    line-height: 1.7;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -78,7 +77,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p{
-    margin-bottom: 1.5em; 
+    margin-bottom: 1.5em;
 }
 
 
@@ -164,10 +163,10 @@ button,
 input,
 select,
 textarea {
-	font-size: 100%;
-	margin: 0;
-	max-width: 100%;
-	vertical-align: baseline;
+    font-size: 100%;
+    margin: 0;
+    max-width: 100%;
+    vertical-align: baseline;
 }
 
 embed,
@@ -221,36 +220,33 @@ iframe{
 button,
 input,
 textarea {
-	font-family: inherit;
-	padding: 5px;
+    font-family: inherit;
+    padding: 5px 10px;
 }
 
 input,
 textarea {
-	color: #727272;
+    color: #727272;
     border: 1px solid #aaa1a8;
 }
 
 input:focus,
 textarea:focus {
-	outline: 0;
+    outline: 0;
 }
 
 input:hover,
 textarea:hover {
-	outline: 0;
+    outline: 0;
 }
 
 button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-    border: 1px solid #455A64;
+    background:  #009688;
+    border: 1px solid #009688;
     border-radius: 2px;
-    background:    -moz-linear-gradient(#607d8b, #455a64);
-    background:    -o-linear-gradient(#607d8b, #455a64);
-    background:    -webkit-linear-gradient(#607d8b, #455a64);
-    background:    linear-gradient(#607d8b, #455a64);
     color:#fff;
 }
 
@@ -258,12 +254,9 @@ button:hover,
 html input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-    border: 1px solid #455A64;
+    background: #009688;
+    border: 1px solid #009688;
     border-radius: 2px;
-    background:    -moz-linear-gradient(#607d8b, #455a64);
-    background:    -o-linear-gradient(#607d8b, #455a64);
-    background:    -webkit-linear-gradient(#607d8b, #455a64);
-    background:    linear-gradient(#607d8b, #455a64);
     color:#fff;
 }
 
@@ -275,12 +268,9 @@ button:active,
 html input[type="button"]:active,
 input[type="reset"]:active,
 input[type="submit"]:active {
-    border: 1px solid #455A64;
+    background: #009688;
+    border: 1px solid #009688;
     border-radius: 2px;
-    background:    -moz-linear-gradient(#607d8b, #455a64);
-    background:    -o-linear-gradient(#607d8b, #455a64);
-    background:    -webkit-linear-gradient(#607d8b, #455a64);
-    background:    linear-gradient(#607d8b, #455a64);
     color:#fff;
 }
 
@@ -1003,7 +993,8 @@ img.wp-post-image{
 
 }
 
-.entry-meta a{
+.entry-meta a,
+.entry-meta a:visited {
     clear: both;
     color: #727272;
     text-transform: capitalize;
@@ -1053,7 +1044,10 @@ img.wp-post-image{
     margin-bottom: 1em;
 }
 
-.cat-links a, .tags-links a{
+.cat-links a,
+.cat-links a:visited,
+.tags-links a,
+.tags-links a:visited {
     color: #727272;
     text-transform: capitalize;
 }
@@ -1094,12 +1088,10 @@ img.wp-post-image{
     color: #212121;
 }
 
-.btn-default:hover, .btn-default:focus{
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:visited {
     color: #fff;
-}
-
-.btn-default:visited{
-    color:#212121;
 }
 
 /*Image attachment*/
@@ -1122,7 +1114,6 @@ img.wp-post-image{
     clear: both;
     margin: 0 0 1.5em;
 }
-
 
 .nav-links {
     padding: 15px;
@@ -1160,7 +1151,11 @@ img.wp-post-image{
 }
 
 .next-post a,
-.prev-post a {
+.prev-post a,
+.next-post a:visited,
+.prev-post a:visited,
+.next-post a:focus,
+.prev-post a:focus {
     color: #424242;
     word-wrap: break-word;
 }
@@ -1173,7 +1168,7 @@ img.wp-post-image{
 .pagination {
     display: -ms-flexbox;
     display: flex;
-    padding-left: 0;
+    padding-right: 0;
     list-style: none;
     border-radius: 0.25rem;
     justify-content: center;
@@ -1188,7 +1183,7 @@ img.wp-post-image{
     -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
     -o-box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
     color: #414141;
-    float: left;
+    float: right;
     font-size: 13px;
     width: 40px;
     margin: 0px 3px;
@@ -1212,7 +1207,7 @@ img.wp-post-image{
 
 .page-links a {
     padding: 3px;
-    margin-right: 2px;
+    margin-left: 2px;
 }
 
 
@@ -1352,11 +1347,7 @@ img.wp-post-image{
 }
 
 .comment-respond #submit{
-    background-color: #455A64;
-    background:    -moz-linear-gradient(#607d8b, #455a64);
-    background:    -o-linear-gradient(#607d8b, #455a64);
-    background:    -webkit-linear-gradient(#607d8b, #455a64);
-    background:    linear-gradient(#607d8b, #455a64);
+    background-color: #009688;
     color: white;
     border:none;
     border-radius: 4px;
@@ -1385,13 +1376,13 @@ img.wp-post-image{
 }
 
 .comment-form .comment-form-cookies-consent input[type=checkbox] {
-    margin-right: 5px;
+    margin-left: 5px;
     width: 20px;
     height: 20px;
 }
 
-.bypostauthor{
-    
+.bypostauthor {  
+ 
 }
 .no-results, .not-found {
     background: #fff;
@@ -1533,7 +1524,6 @@ img.wp-post-image{
     border: none;
     box-shadow: none;
 }
-
 /*
 * 6.0 Site Footer
 * --------------------------------------------------------------------
@@ -1552,7 +1542,8 @@ img.wp-post-image{
     text-align: center;
 }
 
-.site-footer a{
+.site-footer a,
+.dark .site-info a {
     color: white;
 }
 
@@ -1873,11 +1864,11 @@ img.wp-post-image{
 }
 
 /**
- * 12.0 Dark Theme Skin
-  * -----------------------------------------------------------------------------
+ * 11.0 Dark Theme Skin
+ * ----------------------------------------------------------------------------
  */
 
- body.dark,
+body.dark,
 .dark blockquote {
     background-color: #121212 !important;
 }
@@ -2045,4 +2036,9 @@ body.dark,
 
 .dark .main-navigation .menu-toggle .icon-bar {
     background-color: rgba(255,255,255,0.87);
+}
+.no-widgets-sidebar {
+    float: none;
+    margin-right: auto;
+    margin-left: auto;
 }

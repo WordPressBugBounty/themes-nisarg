@@ -10,10 +10,15 @@
  * @package Nisarg
  */
 
-get_header(); ?>
+get_header(); 
+$primary_class = 'col-md-9';
+if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	$primary_class .= ' no-widgets-sidebar';
+}
+?>
 	<div class="container">
 		<div class="row">
-			<div id="primary" class="col-md-9 content-area">
+			<div id="primary" class="<?php echo esc_attr( $primary_class ); ?> content-area">
 				<main id="main" class="site-main" role="main">
 
 					<?php while ( have_posts() ) : the_post(); ?>

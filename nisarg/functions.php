@@ -6,20 +6,7 @@
  */
 
 if ( ! function_exists( 'nisarg_setup' ) ) :
-	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
-	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which
-	 * runs before the init hook. The init hook is too late for some features, such
-	 * as indicating support for post thumbnails.
-	 */
-	/**
-	 * Nisarg only works in WordPress 4.9.7 or later.
-	 */
-	if ( version_compare( $GLOBALS['wp_version'], '5.0', '<' ) ) {
-		require get_template_directory() . '/inc/back-compat.php';
-	}
-
+	
 	function nisarg_setup() {
 		/*
 		 * Make theme available for translation.
@@ -28,6 +15,11 @@ if ( ! function_exists( 'nisarg_setup' ) ) :
 		 * to change 'nisarg' to the name of your theme in all the template files
 		 */
 		load_theme_textdomain( 'nisarg', get_template_directory() . '/languages' );
+
+		// This theme uses wp_nav_menu() in one location.
+		register_nav_menus( array(
+			'primary' => esc_html__( 'Top Primary Menu', 'nisarg' ),
+		) );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -54,14 +46,6 @@ if ( ! function_exists( 'nisarg_setup' ) ) :
 		 *
 		 */
 		add_theme_support( 'responsive-embeds' );
-
-		function register_nisarg_menus() {
-			// This theme uses wp_nav_menu() in one location.
-			register_nav_menus( array(
-				'primary' => esc_html__( 'Top Primary Menu', 'nisarg' ),
-			) );
-		}
-		add_action( 'init', 'register_nisarg_menus' );
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -92,6 +76,26 @@ if ( ! function_exists( 'nisarg_setup' ) ) :
 			'default-color' => 'eceff1',
 			'default-image' => '',
 		) ) );
+
+		/**
+		 * Registers starter content for the Nisarg theme.
+		 *
+		 * Adds a set of default widgets to the primary sidebar when
+		 * WordPress is installed on a fresh site. Starter content is
+		 * only applied to new sites and is previewed in the Customizer
+		 * before being published.
+		 *
+		 */
+		$starter_content = array(
+			'widgets' => array(
+				'sidebar-1' => array(
+				    'search',
+				    'recent-posts',
+				),
+			),
+		);
+
+		add_theme_support( 'starter-content', $starter_content );
 	}
 endif; // nisarg_setup
 add_action( 'after_setup_theme', 'nisarg_setup' );
@@ -134,14 +138,13 @@ function nisarg_scripts() {
 	//Enqueue Styles
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri().'/css/bootstrap.css' );
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/font-awesome/css/font-awesome.min.css' );
-	wp_enqueue_style( 'nisarg-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'nisarg-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
 	//Enqueue Scripts
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.js', array( 'jquery' ), '', true );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.js', array( 'jquery' ), '3.3.5', true );
 	wp_enqueue_script( 'nisarg-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '', true );
-	wp_enqueue_script( 'nisarg-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array( 'jquery' ), '', true );
-	wp_enqueue_script( 'nisarg-js', get_template_directory_uri() . '/js/nisarg.js', array( 'jquery' ), '',true );
-	wp_enqueue_script( 'html5shiv', get_template_directory_uri(). '/js/html5shiv.js', array(),'3.7.3' ,false );
-	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
+	
+	wp_enqueue_script( 'nisarg-js', get_template_directory_uri() . '/js/nisarg.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
+	
 	wp_localize_script( 'nisarg-js', 'screenReaderText', array(
 		'expand'   => __( 'expand child menu', 'nisarg' ),
 		'collapse' => __( 'collapse child menu', 'nisarg' ),
@@ -201,7 +204,7 @@ function nisarg_google_fonts() {
 
 	//Remove system default element from the font list array 
 	//and keeps only google fonts in fontArr
-	array_splice($fontArr, 0, 1); 
+	unset($fontArr['System Default']);
 	
 	$fonts_url = '';
 
@@ -220,7 +223,7 @@ function nisarg_google_fonts() {
 		$heading_font_weight = str_replace( 'italic', 'i', $heading_font_weight );
 		
 		//get menu font weight
-		$menu_item_font_family = get_theme_mod( 'nisarg_menu_font_family_setting', 'body' );
+		$menu_item_font_family = get_theme_mod( 'nisarg_menuitem_font_family_setting', 'body' );
 		$menu_item_font_weight = get_theme_mod( 'nisarg_menu_font_weight_setting', '400' );
 		$menu_item_font_weight = str_replace( 'italic', 'i', $menu_item_font_weight );
 
@@ -238,20 +241,16 @@ function nisarg_google_fonts() {
 		$font_families = array();
 		if ( array_key_exists( $body_font_family, $fontArr) ) {
 			if( 'body' === $menu_item_font_family ) {
-				if( $body_font_weight != $menu_item_font_weight ) {
-					$body_font_weight .= ','.$menu_item_font_weight.',700';
-				} else {
-					$body_font_weight .= ',700';
-				}
+				if( $body_font_weight !== $menu_item_font_weight ) {
+					$body_font_weight .= ','.$menu_item_font_weight;
+				} 
 			}
 			$font_families[] = $body_font_family.':'.$body_font_weight;
 		}
 		if ( array_key_exists( $heading_font_family, $fontArr) ) {
 			if( 'heading' === $menu_item_font_family ) {
-				if ( $heading_font_weight != $menu_item_font_weight ) {
-					$heading_font_weight .= ','.$menu_item_font_weight.',700';
-				} else {
-					$heading_font_weight .= ',700';
+				if ( $heading_font_weight !== $menu_item_font_weight ) {
+					$heading_font_weight .= ','.$menu_item_font_weight;
 				}
 			}
 			$font_families[] = $heading_font_family.':'.$heading_font_weight;
@@ -262,7 +261,7 @@ function nisarg_google_fonts() {
 			'display' => 'swap',
 		);
 		$fonts_url = esc_url(add_query_arg( $query_args, 'https://fonts.googleapis.com/css' ));
-
+		
 		if( 'cdn' === $font_host ) {
 			wp_register_style( 'nisarg-google-fonts', $fonts_url, array(), null );
 			wp_enqueue_style( 'nisarg-google-fonts' );
@@ -301,6 +300,7 @@ function custom_excerpt_length( $length ) {
 	return 80;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
 
 /**
  * Return the post URL.

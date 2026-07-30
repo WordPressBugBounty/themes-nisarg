@@ -1,13 +1,13 @@
 === Nisarg ===
 Contributors: falgunihdesai
-Tested up to: 6.6
+Tested up to: 6.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Theme Name: Nisarg
 Author: Falguni Desai
 Author URI: https://www.falgunithemes.com
 
-Version: 1.6
+Version: 1.7
 
 
 Tags: pink,orange,blue,green,yellow, gray, white,black,light,two-columns, right-sidebar, responsive-layout, theme-options, custom-background, custom-header, custom-colors, custom-menu, featured-images,  post-formats, sticky-post, translation-ready, rtl-language-support,threaded-comments
@@ -17,7 +17,8 @@ Text Domain: nisarg
 
 == Description ==
 
-Nisarg is a new fully responsive and translation ready theme that allows you to create stunning blogs and websites. Theme is well suited for travel, photography, recipe, design, art, personal and any other creative websites and blogs. The theme is developed using Bootstrap 3 that makes it mobile and tablets friendly.  It has various options in WordPress Customizer to change look of the theme. Theme customizer can be used to add your own header image of flexible height, background image, to set background color, header text color and accent color(Suggest seven different accent colors and supports selection of any accent color from the color picker).  Theme supports eight post formats, such as: Video, Image, Aside, Status, Audio, Quote, Link and Gallery. 
+Nisarg is a Classic WordPress theme with a clean, content-first design. Ideal for blogs, photography, travel, recipes, art, portfolios, and personal websites, it helps your content stand out with a distraction-free layout and intuitive Customizer options. Nisarg theme is Responsive and translation-ready. Nisarg combines simplicity and flexibility to help you create a beautiful, professional-looking website.
+
 
 == LICENSES ==
 

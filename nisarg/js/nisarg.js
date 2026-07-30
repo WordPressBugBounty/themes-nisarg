@@ -46,8 +46,7 @@
       * Remove white space between menu and header image.
       */
     var setHeight = function (h) {	
-    	height = h;
-    	$("#cc_spacer").css("height", height + "px");
+    	$("#cc_spacer").css("height", h + "px");
 	}
 
 	$(window).resize(function(){
